@@ -101,7 +101,7 @@ Custom property | Description | Default
         <div class="node-container">
             <div class="node-row">
                 <span class$="{{_computeClass(data.*)}}" on-click="toggleChildren"></span>
-                <iron-icon class="node-icon" icon$="{{_computeIcon(data.icon)}}" on-click="select"></iron-icon>
+                <iron-icon class="node-icon" style$="{{_computeColor(data.color)}};" icon$="{{_computeIcon(data.icon)}}" on-click="select"></iron-icon>
                 <span class="node-name" on-click="select">{{data.name}}</span>
                 <template is="dom-if" if="{{actions}}">
                     <paper-menu-button id="actions">
@@ -193,6 +193,16 @@ Custom property | Description | Default
          */
         _computeIcon: function(icon) {
             return icon ? icon : 'folder';
+        },
+
+        /**
+        * Compute the necessary node icon color.
+        *
+        * @param {string} color
+        * @return {string} the computed color.
+        */
+        _computeColor: function(color) {
+        return color ? 'color:' + color + ';' : '';
         },
 
         _actionClicked: function (event) {
